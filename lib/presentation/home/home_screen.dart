@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:image_search/presentation/home/commit_view_model.dart';
+import 'package:image_search/presentation/home/widget/commit_widget.dart';
 
 import 'package:provider/provider.dart';
 
@@ -70,26 +71,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   viewModel.fetch();
                 },
-                child: const Text('내깃주소 커밋기록 찾기버튼'),
+                child: const Center(child: Text('커밋기록 불러오기')),
               ),
             ),
           ),
           state.isLoading
               ? const CircularProgressIndicator()
               : Expanded(
-                  child: GridView.builder(
+                  child: ListView.builder(
                     padding: const EdgeInsets.all(16.0),
                     itemCount: state.commits.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                    ),
                     itemBuilder: (context, index) {
                       final commit = state.commits[index];
-
-                      return Text(commit.message.toString());
+                      return CommitWidget(commit: commit);
                     },
                   ),
                 )
