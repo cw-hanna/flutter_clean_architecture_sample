@@ -1,11 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:image_search/domain/model/photo.dart';
-import 'package:image_search/presentation/home/components/photo_widget.dart';
-import 'package:image_search/presentation/home/home_view_model.dart';
+import 'package:image_search/presentation/home/commit_view_model.dart';
+
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     Future.microtask(() {
-      final viewModel = context.read<HomeViewModel>();
+      final viewModel = context.read<CommitViewModel>();
       _subscription = viewModel.eventStream.listen((event) {
         event.when(showSnackBar: (message) {
           final snackBar = SnackBar(content: Text(message));
@@ -45,14 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<HomeViewModel>();
+    final viewModel = context.watch<CommitViewModel>();
     final state = viewModel.state;
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          '이미지 검색 앱',
+          '커밋 기록 검색',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -62,19 +59,18 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(10.0),
-                )),
-                suffixIcon: IconButton(
-                  onPressed: () async {
-                    viewModel.fetch(_controller.text);
-                  },
-                  icon: const Icon(Icons.search),
-                ),
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10.0),
+                  ),
+                  color: Colors.yellow),
+              child: GestureDetector(
+                onTap: () {
+                  viewModel.fetch();
+                },
+                child: const Text('내깃주소 커밋기록 찾기버튼'),
               ),
             ),
           ),
@@ -83,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
               : Expanded(
                   child: GridView.builder(
                     padding: const EdgeInsets.all(16.0),
-                    itemCount: state.photos.length,
+                    itemCount: state.commits.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -91,9 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisSpacing: 16,
                     ),
                     itemBuilder: (context, index) {
-                      final photo = state.photos[index];
+                      final commit = state.commits[index];
 
-                      return PhotoWidget(photo: photo);
+                      return Text(commit.message.toString());
                     },
                   ),
                 )
