@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:image_search/data/data_source/result.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/domain/usecase/get_commits_user_case.dart';
-import 'package:image_search/presentation/home/commit_state.dart';
-import 'package:image_search/presentation/home/home_ui_event.dart';
+import 'package:image_search/presentation/search/commit_state.dart';
+import 'package:image_search/presentation/search/home_ui_event.dart';
 
 class CommitViewModel with ChangeNotifier {
   final GetCommitsUseCase getCommitsUseCase;

@@ -2,7 +2,7 @@ import 'package:image_search/data/data_source/commit_api.dart';
 import 'package:image_search/data/repository/commit_api_repository_impl_api.dart';
 import 'package:image_search/domain/repository/commit_api_repository.dart';
 import 'package:image_search/domain/usecase/get_commits_user_case.dart';
-import 'package:image_search/presentation/home/commit_view_model.dart';
+import 'package:image_search/presentation/search/commit_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:http/http.dart' as http;

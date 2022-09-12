@@ -1,21 +1,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:image_search/presentation/home/commit_view_model.dart';
-import 'package:image_search/presentation/home/widget/commit_widget.dart';
+import 'package:image_search/presentation/search/commit_view_model.dart';
+import 'package:image_search/presentation/search/widget/commit_widget.dart';
+import 'package:image_search/presentation/theme/cw_colors.dart';
 
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SearchScreenState extends State<SearchScreen> {
   final _controller = TextEditingController();
   StreamSubscription? _subscription;
 
@@ -47,30 +48,21 @@ class _HomeScreenState extends State<HomeScreen> {
     final state = viewModel.state;
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          '커밋 기록 검색',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
-                  ),
-                  color: Colors.yellow),
-              child: GestureDetector(
-                onTap: () {
-                  viewModel.fetch();
-                },
+            child: GestureDetector(
+              onTap: () {
+                viewModel.fetch();
+              },
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.0),
+                    ),
+                    color: CwColors.color2),
                 child: const Center(child: Text('커밋기록 불러오기')),
               ),
             ),

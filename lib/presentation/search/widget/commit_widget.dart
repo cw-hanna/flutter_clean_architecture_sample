@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_search/domain/model/commit.dart';
-import 'package:image_search/presentation/home/commit_detail_screen.dart';
+import 'package:image_search/presentation/search/commit_detail_screen.dart';
+import 'package:image_search/presentation/theme/cw_colors.dart';
 
 class CommitWidget extends StatelessWidget {
   final Commit commit;
@@ -13,7 +14,6 @@ class CommitWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            print('bbori');
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -21,7 +21,7 @@ class CommitWidget extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(66, 123, 112, 222),
+              color: CwColors.color5,
               borderRadius: BorderRadius.circular(10),
             ),
             padding: const EdgeInsets.all(10),
