@@ -5,14 +5,10 @@ import 'package:image_search/data/data_source/result.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/domain/usecase/get_commits_user_case.dart';
 import 'package:image_search/presentation/search/commit_state.dart';
-import 'package:image_search/presentation/search/home_ui_event.dart';
 
-class CommitViewModel with ChangeNotifier {
+class CommitProvider with ChangeNotifier {
   final GetCommitsUseCase getCommitsUseCase;
-  CommitViewModel(this.getCommitsUseCase);
-
-  final _eventController = StreamController<HomeUiEvent>();
-  Stream<HomeUiEvent> get eventStream => _eventController.stream;
+  CommitProvider(this.getCommitsUseCase);
 
   CommitState _state = CommitState([], false);
   CommitState get state => _state;
@@ -24,12 +20,12 @@ class CommitViewModel with ChangeNotifier {
 
     final Result<List<Commit>> result = await getCommitsUseCase.call();
 
-    result.when(success: (commits) {
-      _state = state.copyWith(commits: commits);
-      notifyListeners();
-    }, error: (message) {
-      _eventController.add(HomeUiEvent.showSnackBar(message));
-    });
+    result.when(
+        success: (commits) {
+          _state = state.copyWith(commits: commits);
+          notifyListeners();
+        },
+        error: (message) {});
     notifyListeners();
     _state = state.copyWith(isLoading: false);
   }

@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/presentation/bloc/login/login_bloc.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
 
+///LoginScreen
+///LoginBloc의 state따라서 화면노출
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -27,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
+//로그인 요청화면(로그아웃된 상태)
 Widget loginRequestScreen(TextEditingController idController,
     TextEditingController pwdController, BuildContext context) {
   return Scaffold(
@@ -91,6 +94,7 @@ Widget loginRequestScreen(TextEditingController idController,
   );
 }
 
+//로그아웃 요청화면(로그인된 상태)
 Widget logoutRequestScreen(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
