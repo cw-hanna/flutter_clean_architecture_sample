@@ -37,7 +37,6 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
   @override
   Widget build(BuildContext context) {
     final commitSearchProvider = context.watch<CommitSearchProvider>();
-    var loginState = BlocProvider.of<LoginBloc>(context).state;
 
     return Scaffold(
       body: Column(
@@ -55,8 +54,9 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
           ),
 
           //커밋기록 결과 ListView
-          loginState is LoginSuccess
-              ? Expanded(
+          commitSearchProvider.state.isLoading
+              ? const CircularProgressIndicator()
+              : Expanded(
                   child: ListView.builder(
                     padding: const EdgeInsets.all(16.0),
                     itemCount: commitSearchProvider.commits.length,
@@ -66,7 +66,6 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
                     },
                   ),
                 )
-              : const SizedBox(),
         ],
       ),
     );

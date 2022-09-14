@@ -4,18 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:image_search/data/data_source/result.dart';
 import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/model/commit.dart';
-import 'package:image_search/domain/usecase/get_commits_user_case.dart';
+import 'package:image_search/domain/usecase/get_commits_use_case.dart';
+import 'package:image_search/presentation/commit/search/commit_api_loading_state.dart';
 
 class CommitSearchProvider with ChangeNotifier {
   List<Commit> _commits = [];
-  bool _isLoading = true;
+  CommitApiLoadingState _state = CommitApiLoadingState(false);
 
+  CommitApiLoadingState get state => _state;
   List<Commit> get commits => _commits;
-  bool get isLoading => _isLoading;
 
   //api호출
   Future<void> fetch() async {
-    _isLoading = true;
+    _state = state.copyWith(isLoading: true);
     notifyListeners();
 
     GetCommitsUseCase getCommitsUseCase = serviceLocator<GetCommitsUseCase>();
@@ -28,6 +29,6 @@ class CommitSearchProvider with ChangeNotifier {
         },
         error: (message) {});
     notifyListeners();
-    _isLoading = false;
+    _state = state.copyWith(isLoading: false);
   }
 }
