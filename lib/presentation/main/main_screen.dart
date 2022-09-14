@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:image_search/presentation/commit/search_screen.dart';
 import 'package:image_search/presentation/login/login_screen.dart';
-import 'package:image_search/presentation/search/search_screen.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
 
 class MainScreen extends StatefulWidget {

@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/presentation/bloc/login/login_bloc.dart';
-import 'package:image_search/presentation/search/commit_provider.dart';
-import 'package:image_search/presentation/search/widget/commit_widget.dart';
+import 'package:image_search/presentation/commit/commit_provider.dart';
+import 'package:image_search/presentation/commit/widget/commit_widget.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
 
 ///SearchScreen
