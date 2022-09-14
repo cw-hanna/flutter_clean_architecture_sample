@@ -8,7 +8,7 @@ class GetCommitsUseCase {
   GetCommitsUseCase();
 
   Future<Result<List<Commit>>> call() async {
-    CommitApiRepository repository = serviceLocator<CommitApiRepositoryImpl>();
+    CommitApiRepository repository = serviceLocator<CommitApiRepository>();
 
     final result = await repository.fetch();
 

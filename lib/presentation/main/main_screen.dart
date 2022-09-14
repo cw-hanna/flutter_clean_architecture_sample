@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_search/presentation/commit/search_screen.dart';
+import 'package:image_search/presentation/commit/search/commit_search_screen.dart';
 import 'package:image_search/presentation/login/login_screen.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
 
@@ -11,7 +11,11 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final List _screens = const [SearchScreen(), LoginScreen(), LoginScreen()];
+  final List _screens = const [
+    CommitSearchScreen(),
+    LoginScreen(),
+    LoginScreen()
+  ];
 
   int _selectedIndex = 0;
 
