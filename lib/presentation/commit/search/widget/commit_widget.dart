@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/presentation/commit/detail/commit_detail_screen.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
