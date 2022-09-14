@@ -3,22 +3,22 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/presentation/bloc/login/login_bloc.dart';
-import 'package:image_search/presentation/commit/commit_provider.dart';
-import 'package:image_search/presentation/commit/widget/commit_widget.dart';
+import 'package:image_search/presentation/commit/search/provider/commit_search_provider.dart';
+import 'package:image_search/presentation/commit/search/widget/commit_widget.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
 
 ///SearchScreen
 ///커밋기록 API호출 및 리스트 노출
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({
+class CommitSearchScreen extends StatefulWidget {
+  const CommitSearchScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<CommitSearchScreen> createState() => _CommitSearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _CommitSearchScreenState extends State<CommitSearchScreen> {
   final _controller = TextEditingController();
   StreamSubscription? _subscription;
 
@@ -36,8 +36,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final commitProvider = context.watch<CommitProvider>();
-    final state = commitProvider.state;
+    final commitSearchProvider = context.watch<CommitSearchProvider>();
     var loginState = BlocProvider.of<LoginBloc>(context).state;
 
     return Scaffold(
@@ -49,7 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                getCommitListButton(commitProvider),
+                getCommitListButton(commitSearchProvider),
                 loginStateIcon(),
               ],
             ),
@@ -60,9 +59,9 @@ class _SearchScreenState extends State<SearchScreen> {
               ? Expanded(
                   child: ListView.builder(
                     padding: const EdgeInsets.all(16.0),
-                    itemCount: state.commits.length,
+                    itemCount: commitSearchProvider.commits.length,
                     itemBuilder: (context, index) {
-                      final commit = state.commits[index];
+                      final commit = commitSearchProvider.commits[index];
                       return CommitWidget(commit: commit);
                     },
                   ),
@@ -74,7 +73,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   ///커밋api호출 버튼
-  Widget getCommitListButton(CommitProvider commitProvider) {
+  Widget getCommitListButton(CommitSearchProvider commitProvider) {
     return Expanded(
       child: GestureDetector(
         onTap: () {

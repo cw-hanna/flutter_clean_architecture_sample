@@ -5,17 +5,17 @@ import 'package:image_search/data/data_source/result.dart';
 import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/domain/usecase/get_commits_user_case.dart';
-import 'package:image_search/presentation/commit/commit_state.dart';
 
-class CommitProvider with ChangeNotifier {
-  CommitProvider();
+class CommitSearchProvider with ChangeNotifier {
+  List<Commit> _commits = [];
+  bool _isLoading = true;
 
-  CommitState _state = CommitState([], false);
-  CommitState get state => _state;
+  List<Commit> get commits => _commits;
+  bool get isLoading => _isLoading;
 
   //api호출
   Future<void> fetch() async {
-    _state = state.copyWith(isLoading: true);
+    _isLoading = true;
     notifyListeners();
 
     GetCommitsUseCase getCommitsUseCase = serviceLocator<GetCommitsUseCase>();
@@ -23,11 +23,11 @@ class CommitProvider with ChangeNotifier {
 
     result.when(
         success: (commits) {
-          _state = state.copyWith(commits: commits);
+          _commits = commits;
           notifyListeners();
         },
         error: (message) {});
     notifyListeners();
-    _state = state.copyWith(isLoading: false);
+    _isLoading = false;
   }
 }
