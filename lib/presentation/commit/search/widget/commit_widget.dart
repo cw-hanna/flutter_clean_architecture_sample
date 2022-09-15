@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/presentation/commit/detail/commit_detail_screen.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
+import 'package:image_search/presentation/webview/base_web_view.dart';
 
 class CommitWidget extends StatelessWidget {
   final Commit commit;
@@ -17,7 +18,15 @@ class CommitWidget extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const CommitDetailScreen()));
+                    builder: (context) => const BaseWebView(
+                          htmlString:
+                              'https://github.com/gkssk925/flutter_inappwebview/commit/fc3db2002ef5d90ee5b54b99b5a75ee8400f0318',
+                        )));
+
+            // Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         builder: (context) => const CommitDetailScreen()));
           },
           child: Container(
             decoration: BoxDecoration(
