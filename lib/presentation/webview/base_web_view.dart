@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:image_search/string_utils.dart';
 
 class BaseWebView extends StatefulWidget {
   final String? htmlString;
@@ -66,9 +67,9 @@ class _BaseWebViewState extends State<BaseWebView>
           child: Stack(
             children: <Widget>[
               InAppWebView(
-                  initialUrlRequest: URLRequest(
-                      url: Uri.parse(
-                          'https://github.com/gkssk925/flutter_inappwebview/commit/fc3db2002ef5d90ee5b54b99b5a75ee8400f0318')),
+                  initialUrlRequest: StringUtil.isValidString(widget.htmlString)
+                      ? URLRequest(url: Uri.parse(widget.htmlString!))
+                      : null,
                   // initialData: InAppWebViewInitialData(
                   //   data:
                   //       'https://github.com/gkssk925/flutter_inappwebview/commit/fc3db2002ef5d90ee5b54b99b5a75ee8400f0318',

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:image_search/domain/model/commit.dart';
-import 'package:image_search/presentation/commit/detail/commit_detail_screen.dart';
+import 'package:image_search/presentation/commit/search/provider/commit_detail_provider.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
 import 'package:image_search/presentation/webview/base_web_view.dart';
+import 'package:provider/provider.dart';
 
 class CommitWidget extends StatelessWidget {
   final Commit commit;
@@ -10,23 +11,21 @@ class CommitWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final commitDetailProvider = context.watch<CommitDetailProvider>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(
-          onTap: () {
+          onTap: () async {
+            var htmlUrl = await commitDetailProvider.fetch(commit.url);
+
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const BaseWebView(
-                          htmlString:
-                              'https://github.com/gkssk925/flutter_inappwebview/commit/fc3db2002ef5d90ee5b54b99b5a75ee8400f0318',
+                    builder: (context) => BaseWebView(
+                          htmlString: htmlUrl,
                         )));
-
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) => const CommitDetailScreen()));
           },
           child: Container(
             decoration: BoxDecoration(

@@ -34,12 +34,16 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
       var commitSearchProvider =
           Provider.of<CommitSearchProvider>(context, listen: false);
 
-      _controller.addListener(() {
+      _controller.addListener(() async {
         if (_controller.position.maxScrollExtent == _controller.offset) {
           var randomNum = Random().nextInt(10);
           //api결과 랜덤3개 추가
           var randomList =
-              commitSearchProvider.commits.getRange(randomNum, randomNum + 2);
+              commitSearchProvider.commits.getRange(randomNum, randomNum + 3);
+
+          //2초 딜레이
+          await Future.delayed(const Duration(seconds: 2));
+
           commitSearchProvider.addCommitList(randomList.toList());
         }
       });
