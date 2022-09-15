@@ -31,4 +31,9 @@ class CommitSearchProvider with ChangeNotifier {
     notifyListeners();
     _state = state.copyWith(isLoading: false);
   }
+
+  void addCommitList(List<Commit> commits) {
+    _commits.addAll(commits);
+    notifyListeners();
+  }
 }
