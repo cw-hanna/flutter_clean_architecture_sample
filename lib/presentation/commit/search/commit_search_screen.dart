@@ -6,6 +6,9 @@ import 'package:image_search/presentation/bloc/login/login_bloc.dart';
 import 'package:image_search/presentation/commit/search/provider/commit_search_provider.dart';
 import 'package:image_search/presentation/commit/search/widget/commit_widget.dart';
 import 'package:image_search/presentation/theme/cw_colors.dart';
+import 'package:provider/provider.dart';
+
+import 'dart:math';
 
 ///SearchScreen
 ///커밋기록 API호출 및 리스트 노출
@@ -19,12 +22,28 @@ class CommitSearchScreen extends StatefulWidget {
 }
 
 class _CommitSearchScreenState extends State<CommitSearchScreen> {
-  final _controller = TextEditingController();
+  final _controller = ScrollController();
   StreamSubscription? _subscription;
 
   @override
   void initState() {
     super.initState();
+
+    //최하단 스크롤시 리스트뷰 아이템 추가
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      var commitSearchProvider =
+          Provider.of<CommitSearchProvider>(context, listen: false);
+
+      _controller.addListener(() {
+        if (_controller.position.maxScrollExtent == _controller.offset) {
+          var randomNum = Random().nextInt(10);
+          //api결과 랜덤3개 추가
+          var randomList =
+              commitSearchProvider.commits.getRange(randomNum, randomNum + 2);
+          commitSearchProvider.addCommitList(randomList.toList());
+        }
+      });
+    });
   }
 
   @override
@@ -58,11 +77,20 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
               ? const CircularProgressIndicator()
               : Expanded(
                   child: ListView.builder(
+                    controller: _controller,
                     padding: const EdgeInsets.all(16.0),
-                    itemCount: commitSearchProvider.commits.length,
+                    itemCount: commitSearchProvider.commits.length + 1,
                     itemBuilder: (context, index) {
-                      final commit = commitSearchProvider.commits[index];
-                      return CommitWidget(commit: commit);
+                      if (commitSearchProvider.commits.isEmpty) {
+                        return const SizedBox();
+                      } else if (index < commitSearchProvider.commits.length) {
+                        final commit = commitSearchProvider.commits[index];
+                        return CommitWidget(commit: commit);
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
                     },
                   ),
                 )
