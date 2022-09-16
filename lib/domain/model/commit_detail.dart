@@ -1,16 +1,23 @@
+import 'package:equatable/equatable.dart';
 import 'package:image_search/domain/model/commit.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'commit_detail.freezed.dart';
-part 'commit_detail.g.dart';
+class CommitDetail extends Equatable {
+  final Commit? commit;
+  final String? url;
+  final String? html_url;
 
-@freezed
-class CommitDetail with _$CommitDetail {
-  factory CommitDetail({
-    required Commit? commit,
-    required String? url,
-    required String? html_url,
-  }) = _CommitDetail;
+  const CommitDetail({
+    this.commit,
+    this.url,
+    this.html_url,
+  });
 
-  factory CommitDetail.fromJson(Map<String, dynamic> json) => _$CommitDetailFromJson(json);
+  @override
+  List<Object?> get props {
+    return [
+      commit,
+      url,
+      html_url,
+    ];
+  }
 }

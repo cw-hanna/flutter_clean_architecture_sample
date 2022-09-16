@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_search/presentation/bloc/login/login_bloc.dart';
+import 'package:image_search/config/theme/cw_colors.dart';
+import 'package:image_search/core/bloc/login/login_bloc.dart';
 import 'package:image_search/presentation/commit/search/provider/commit_search_provider.dart';
 import 'package:image_search/presentation/commit/search/widget/commit_widget.dart';
-import 'package:image_search/presentation/theme/cw_colors.dart';
+
 import 'package:provider/provider.dart';
 
 import 'dart:math';

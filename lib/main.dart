@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/di/locator.dart';
-import 'package:image_search/presentation/bloc/login/login_bloc.dart';
+import 'package:image_search/core/bloc/login/login_bloc.dart';
 import 'package:image_search/presentation/commit/search/provider/commit_detail_provider.dart';
 import 'package:image_search/presentation/commit/search/provider/commit_search_provider.dart';
 import 'package:image_search/presentation/main/main_screen.dart';

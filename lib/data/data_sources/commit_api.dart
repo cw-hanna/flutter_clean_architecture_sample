@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:image_search/data/data_source/result.dart';
+import 'package:image_search/core/resources/result.dart';
 
 class CommitApi {
   CommitApi();
