@@ -1,17 +1,22 @@
+import 'package:equatable/equatable.dart';
 import 'package:image_search/domain/model/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'commit.freezed.dart';
-part 'commit.g.dart';
+class Commit extends Equatable {
+  final User? author;
+  final User? committer;
+  final String? message;
+  final String? url;
 
-@freezed
-class Commit with _$Commit {
-  factory Commit({
-    required User? author,
-    required User? committer,
-    required String? message,
-    required String? url,
-  }) = _Commit;
+  const Commit({
+    this.author,
+    this.committer,
+    this.message,
+    this.url,
+  });
 
-  factory Commit.fromJson(Map<String, dynamic> json) => _$CommitFromJson(json);
+  @override
+  List<Object?> get props {
+    return [author, committer, message, url];
+  }
 }

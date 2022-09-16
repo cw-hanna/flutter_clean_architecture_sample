@@ -23,7 +23,7 @@ class _$CommitDetailModelTearOff {
   const _$CommitDetailModelTearOff();
 
   _CommitDetailModel call(
-      {required Commit? commit,
+      {required CommitModel? commit,
       required String? url,
       required String? html_url}) {
     return _CommitDetailModel(
@@ -43,7 +43,7 @@ const $CommitDetailModel = _$CommitDetailModelTearOff();
 
 /// @nodoc
 mixin _$CommitDetailModel {
-  Commit? get commit => throw _privateConstructorUsedError;
+  CommitModel? get commit => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get html_url => throw _privateConstructorUsedError;
 
@@ -58,9 +58,9 @@ abstract class $CommitDetailModelCopyWith<$Res> {
   factory $CommitDetailModelCopyWith(
           CommitDetailModel value, $Res Function(CommitDetailModel) then) =
       _$CommitDetailModelCopyWithImpl<$Res>;
-  $Res call({Commit? commit, String? url, String? html_url});
+  $Res call({CommitModel? commit, String? url, String? html_url});
 
-  $CommitCopyWith<$Res>? get commit;
+  $CommitModelCopyWith<$Res>? get commit;
 }
 
 /// @nodoc
@@ -82,7 +82,7 @@ class _$CommitDetailModelCopyWithImpl<$Res>
       commit: commit == freezed
           ? _value.commit
           : commit // ignore: cast_nullable_to_non_nullable
-              as Commit?,
+              as CommitModel?,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -95,12 +95,12 @@ class _$CommitDetailModelCopyWithImpl<$Res>
   }
 
   @override
-  $CommitCopyWith<$Res>? get commit {
+  $CommitModelCopyWith<$Res>? get commit {
     if (_value.commit == null) {
       return null;
     }
 
-    return $CommitCopyWith<$Res>(_value.commit!, (value) {
+    return $CommitModelCopyWith<$Res>(_value.commit!, (value) {
       return _then(_value.copyWith(commit: value));
     });
   }
@@ -113,10 +113,10 @@ abstract class _$CommitDetailModelCopyWith<$Res>
           _CommitDetailModel value, $Res Function(_CommitDetailModel) then) =
       __$CommitDetailModelCopyWithImpl<$Res>;
   @override
-  $Res call({Commit? commit, String? url, String? html_url});
+  $Res call({CommitModel? commit, String? url, String? html_url});
 
   @override
-  $CommitCopyWith<$Res>? get commit;
+  $CommitModelCopyWith<$Res>? get commit;
 }
 
 /// @nodoc
@@ -140,7 +140,7 @@ class __$CommitDetailModelCopyWithImpl<$Res>
       commit: commit == freezed
           ? _value.commit
           : commit // ignore: cast_nullable_to_non_nullable
-              as Commit?,
+              as CommitModel?,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ class _$_CommitDetailModel implements _CommitDetailModel {
       _$$_CommitDetailModelFromJson(json);
 
   @override
-  final Commit? commit;
+  final CommitModel? commit;
   @override
   final String? url;
   @override
@@ -190,7 +190,7 @@ class _$_CommitDetailModel implements _CommitDetailModel {
 
 abstract class _CommitDetailModel implements CommitDetailModel {
   factory _CommitDetailModel(
-      {required Commit? commit,
+      {required CommitModel? commit,
       required String? url,
       required String? html_url}) = _$_CommitDetailModel;
 
@@ -198,7 +198,7 @@ abstract class _CommitDetailModel implements CommitDetailModel {
       _$_CommitDetailModel.fromJson;
 
   @override
-  Commit? get commit;
+  CommitModel? get commit;
   @override
   String? get url;
   @override

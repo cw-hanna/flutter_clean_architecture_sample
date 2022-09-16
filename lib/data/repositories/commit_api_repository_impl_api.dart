@@ -1,5 +1,6 @@
 import 'package:image_search/data/data_sources/commit_api.dart';
 import 'package:image_search/core/resources/result.dart';
+import 'package:image_search/data/models/commit_model.dart';
 import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/domain/repository/commit_api_repository.dart';
@@ -15,7 +16,7 @@ class CommitApiRepositoryImpl implements CommitApiRepository {
     return result.when(
       success: (iterable) {
         return Result.success(iterable.map((e) {
-          return Commit.fromJson(e['commit']);
+          return CommitModel.fromJson(e['commit']);
         }).toList());
       },
       error: (message) {
