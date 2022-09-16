@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:image_search/core/resources/result.dart';
+import 'package:image_search/data/models/commit_api_loading_state.dart';
 import 'package:image_search/di/locator.dart';
-import 'package:image_search/domain/model/commit.dart';
-import 'package:image_search/domain/usecase/get_commits_use_case.dart';
-import 'package:image_search/presentation/commit/search/commit_api_loading_state.dart';
+import 'package:image_search/domain/entities/commit.dart';
+import 'package:image_search/domain/usecases/get_commits_use_case.dart';
 
 class CommitSearchProvider with ChangeNotifier {
   List<Commit> _commits = [];

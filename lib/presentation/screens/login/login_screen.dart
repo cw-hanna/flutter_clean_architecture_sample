@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_search/core/bloc/login/login_bloc.dart';
+import 'package:image_search/presentation/blocs/login/login_bloc.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 
 ///LoginScreen

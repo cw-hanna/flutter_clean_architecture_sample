@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
-import 'package:image_search/core/bloc/login/login_bloc.dart';
-import 'package:image_search/presentation/commit/search/provider/commit_search_provider.dart';
-import 'package:image_search/presentation/commit/search/widget/commit_widget.dart';
+import 'package:image_search/presentation/blocs/login/login_bloc.dart';
+import 'package:image_search/presentation/screens/commit/provider/commit_search_provider.dart';
+import 'package:image_search/presentation/widgets/commit_widget.dart';
+
 
 import 'package:provider/provider.dart';
 

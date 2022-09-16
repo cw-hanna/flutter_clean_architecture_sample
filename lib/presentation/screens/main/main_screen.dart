@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:image_search/presentation/commit/search/commit_search_screen.dart';
-import 'package:image_search/presentation/login/login_screen.dart';
+
 import 'package:image_search/config/theme/cw_colors.dart';
+import 'package:image_search/presentation/screens/commit/commit_search_screen.dart';
+import 'package:image_search/presentation/screens/login/login_screen.dart';
+
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);

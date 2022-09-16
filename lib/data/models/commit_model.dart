@@ -1,6 +1,5 @@
 import 'package:image_search/data/models/user_model.dart';
-import 'package:image_search/domain/model/commit.dart';
-import 'package:image_search/domain/model/user.dart';
+import 'package:image_search/domain/entities/commit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'commit_model.freezed.dart';

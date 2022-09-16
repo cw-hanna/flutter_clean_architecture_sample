@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/di/locator.dart';
-import 'package:image_search/core/bloc/login/login_bloc.dart';
-import 'package:image_search/presentation/commit/search/provider/commit_detail_provider.dart';
-import 'package:image_search/presentation/commit/search/provider/commit_search_provider.dart';
-import 'package:image_search/presentation/main/main_screen.dart';
+import 'package:image_search/presentation/blocs/login/login_bloc.dart';
+import 'package:image_search/presentation/screens/commit/provider/commit_detail_provider.dart';
+import 'package:image_search/presentation/screens/commit/provider/commit_search_provider.dart';
+import 'package:image_search/presentation/screens/main/main_screen.dart';
+
 import 'package:provider/provider.dart';
 
 void main() {
