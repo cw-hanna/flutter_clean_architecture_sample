@@ -1,5 +1,5 @@
-import 'package:image_search/data/data_source/commit_api.dart';
-import 'package:image_search/data/data_source/result.dart';
+import 'package:image_search/data/data_sources/commit_api.dart';
+import 'package:image_search/core/resources/result.dart';
 import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/domain/repository/commit_api_repository.dart';

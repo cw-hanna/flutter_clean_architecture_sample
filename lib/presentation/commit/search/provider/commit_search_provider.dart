@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:image_search/data/data_source/result.dart';
+import 'package:image_search/core/resources/result.dart';
 import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/domain/usecase/get_commits_use_case.dart';

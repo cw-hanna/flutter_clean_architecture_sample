@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_search/domain/model/commit.dart';
 import 'package:image_search/presentation/commit/search/provider/commit_detail_provider.dart';
-import 'package:image_search/presentation/theme/cw_colors.dart';
+import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/presentation/webview/base_web_view.dart';
 import 'package:provider/provider.dart';
 

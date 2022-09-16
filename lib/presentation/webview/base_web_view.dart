@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:image_search/string_utils.dart';
+import 'package:image_search/core/utils/string_utils.dart';
 
 class BaseWebView extends StatefulWidget {
   final String? htmlString;
@@ -25,7 +25,7 @@ class _BaseWebViewState extends State<BaseWebView>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
 
     //widget.args로 Map형태로 들어온 값을 이용해 웹뷰속성 세팅 가능
     //ex. widget.args['canHideTab']
@@ -176,7 +176,7 @@ class _BaseWebViewState extends State<BaseWebView>
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

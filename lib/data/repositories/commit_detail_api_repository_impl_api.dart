@@ -1,8 +1,8 @@
-import 'package:image_search/data/data_source/commit_detail_api.dart';
-import 'package:image_search/data/data_source/result.dart';
+import 'package:image_search/data/data_sources/commit_detail_api.dart';
+import 'package:image_search/core/resources/result.dart';
 import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/repository/commit_detail_api_repository.dart';
-import 'package:image_search/string_utils.dart';
+import 'package:image_search/core/utils/string_utils.dart';
 
 class CommitDetailApiRepositoryImpl implements CommitDetailApiRepository {
   CommitDetailApiRepositoryImpl();
