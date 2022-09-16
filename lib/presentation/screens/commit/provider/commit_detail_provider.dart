@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:image_search/core/resources/result.dart';
 import 'package:image_search/di/locator.dart';
-import 'package:image_search/domain/usecase/get_commit_detail_use_case.dart';
+import 'package:image_search/domain/usecases/get_commit_detail_use_case.dart';
 
 class CommitDetailProvider with ChangeNotifier {
   String _htmlUrl = '';

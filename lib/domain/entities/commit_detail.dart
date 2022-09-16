@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:image_search/domain/model/commit.dart';
+import 'package:image_search/domain/entities/commit.dart';
 
 class CommitDetail extends Equatable {
   final Commit? commit;

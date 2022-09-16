@@ -1,7 +1,6 @@
 import 'package:image_search/data/models/commit_model.dart';
-import 'package:image_search/domain/model/commit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:image_search/domain/model/commit_detail.dart';
+import 'package:image_search/domain/entities/commit_detail.dart';
 
 part 'commit_detail_model.freezed.dart';
 part 'commit_detail_model.g.dart';

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:image_search/domain/model/user.dart';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_search/domain/entities/user.dart';
 
 class Commit extends Equatable {
   final User? author;
