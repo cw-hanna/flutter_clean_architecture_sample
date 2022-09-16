@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:image_search/config/theme/cw_colors.dart';
-import 'package:image_search/presentation/screens/commit/commit_search_screen.dart';
 import 'package:image_search/presentation/screens/login/login_screen.dart';
-
+import 'package:image_search/presentation/screens/my/my_list_screen.dart';
+import 'package:image_search/presentation/screens/search/search_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -13,11 +13,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final List _screens = const [
-    CommitSearchScreen(),
-    LoginScreen(),
-    LoginScreen()
-  ];
+  final List _screens = const [MyListScreen(), LoginScreen(), SearchScreen()];
 
   int _selectedIndex = 0;
 
@@ -43,16 +39,16 @@ class _MainScreenState extends State<MainScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            label: 'Search',
-            icon: Icon(Icons.search),
+            label: 'My',
+            icon: Icon(Icons.list),
           ),
           BottomNavigationBarItem(
             label: 'Login',
             icon: Icon(Icons.person),
           ),
           BottomNavigationBarItem(
-            label: 'Test',
-            icon: Icon(Icons.location_on),
+            label: 'Search',
+            icon: Icon(Icons.search),
           ),
         ],
       ),

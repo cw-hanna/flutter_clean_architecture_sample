@@ -7,7 +7,7 @@ import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/entities/commit.dart';
 import 'package:image_search/domain/usecases/get_commits_use_case.dart';
 
-class CommitSearchProvider with ChangeNotifier {
+class MyListProvider with ChangeNotifier {
   List<Commit> _commits = [];
   CommitApiLoadingState _state = CommitApiLoadingState(false);
 

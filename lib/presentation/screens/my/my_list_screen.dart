@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/presentation/blocs/login/login_bloc.dart';
-import 'package:image_search/presentation/screens/commit/provider/commit_search_provider.dart';
-import 'package:image_search/presentation/widgets/commit_widget.dart';
+import 'package:image_search/presentation/screens/my/provider/my_list_provider.dart';
 
+import 'package:image_search/presentation/widgets/commit_widget.dart';
 
 import 'package:provider/provider.dart';
 
@@ -14,16 +14,16 @@ import 'dart:math';
 
 ///SearchScreen
 ///커밋기록 API호출 및 리스트 노출
-class CommitSearchScreen extends StatefulWidget {
-  const CommitSearchScreen({
+class MyListScreen extends StatefulWidget {
+  const MyListScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<CommitSearchScreen> createState() => _CommitSearchScreenState();
+  State<MyListScreen> createState() => _MyListScreenState();
 }
 
-class _CommitSearchScreenState extends State<CommitSearchScreen> {
+class _MyListScreenState extends State<MyListScreen> {
   final _controller = ScrollController();
   StreamSubscription? _subscription;
 
@@ -34,7 +34,7 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
     //최하단 스크롤시 리스트뷰 아이템 추가
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       var commitSearchProvider =
-          Provider.of<CommitSearchProvider>(context, listen: false);
+          Provider.of<MyListProvider>(context, listen: false);
 
       _controller.addListener(() async {
         if (_controller.position.maxScrollExtent == _controller.offset) {
@@ -61,7 +61,7 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final commitSearchProvider = context.watch<CommitSearchProvider>();
+    final commitSearchProvider = context.watch<MyListProvider>();
 
     return Scaffold(
       body: Column(
@@ -106,7 +106,7 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
   }
 
   ///커밋api호출 버튼
-  Widget getCommitListButton(CommitSearchProvider commitProvider) {
+  Widget getCommitListButton(MyListProvider commitProvider) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
@@ -126,7 +126,7 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
                 Radius.circular(10.0),
               ),
               color: CwColors.color2),
-          child: const Center(child: Text('커밋기록 불러오기')),
+          child: const Center(child: Text('내 커밋기록 불러오기')),
         ),
       ),
     );
@@ -139,18 +139,25 @@ class _CommitSearchScreenState extends State<CommitSearchScreen> {
         return TextButton.icon(
             onPressed: () {},
             icon: const Icon(
-              Icons.person,
+              Icons.emoji_emotions,
               color: CwColors.color2,
             ),
-            label: const Text('로그인됨'));
+            label: const Text(
+              '로그인완료',
+              style: TextStyle(
+                  color: CwColors.color2, fontWeight: FontWeight.bold),
+            ));
       }
       return TextButton.icon(
           onPressed: () {},
           icon: const Icon(
-            Icons.person,
-            color: CwColors.gray,
+            Icons.sentiment_very_dissatisfied,
+            color: Colors.black87,
           ),
-          label: const Text('로그아웃됨'));
+          label: const Text(
+            '로그인 해주세요',
+            style: TextStyle(color: Colors.black87),
+          ));
     });
   }
 }

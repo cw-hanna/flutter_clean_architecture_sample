@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/core/utils/string_utils.dart';
 
 class BaseWebView extends StatefulWidget {
@@ -50,12 +51,15 @@ class _BaseWebViewState extends State<BaseWebView>
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          backgroundColor: CwColors.color3,
           leading: Container(
             width: 20,
             height: 20,
             alignment: Alignment.center,
             child: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(
+                Icons.arrow_back,
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -70,11 +74,6 @@ class _BaseWebViewState extends State<BaseWebView>
                   initialUrlRequest: StringUtil.isValidString(widget.htmlString)
                       ? URLRequest(url: Uri.parse(widget.htmlString!))
                       : null,
-                  // initialData: InAppWebViewInitialData(
-                  //   data:
-                  //       'https://github.com/gkssk925/flutter_inappwebview/commit/fc3db2002ef5d90ee5b54b99b5a75ee8400f0318',
-                  //   //data: widget.htmlString!,
-                  // ),
                   initialOptions: InAppWebViewGroupOptions(
                       crossPlatform: InAppWebViewOptions(
                         useShouldOverrideUrlLoading: true,
