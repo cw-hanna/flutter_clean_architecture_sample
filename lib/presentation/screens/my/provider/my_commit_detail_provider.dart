@@ -5,7 +5,7 @@ import 'package:image_search/core/resources/result.dart';
 import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/usecases/get_commit_detail_use_case.dart';
 
-class MyDetailProvider with ChangeNotifier {
+class MyCommitDetailProvider with ChangeNotifier {
   String _htmlUrl = '';
   String get htmlUrl => _htmlUrl;
 

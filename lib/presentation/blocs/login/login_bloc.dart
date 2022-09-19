@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
+import 'package:image_search/core/utils/pref_util.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(const LoginInitial()) {
-    on<LoginRequested>((event, emit) {
+    on<LoginRequested>((event, emit) async {
+      saveLoginPrefs(event);
       var result = checkLogin(event.id, event.pwd);
 
       if (result) {
@@ -29,4 +31,12 @@ bool checkLogin(String id, String pwd) {
     loginResult = false;
   }
   return loginResult;
+}
+
+//로그인 preference 저장
+void saveLoginPrefs(LoginRequested event) {
+  PrefUtil.setString('PREF_ID', event.id);
+  PrefUtil.setString('PREF_PWD', event.pwd);
+  PrefUtil.setString(
+      'PREF_TOKEN', 'Bearer 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');
 }

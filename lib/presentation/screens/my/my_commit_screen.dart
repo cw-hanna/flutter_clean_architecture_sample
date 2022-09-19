@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/presentation/blocs/login/login_bloc.dart';
-import 'package:image_search/presentation/screens/my/provider/my_list_provider.dart';
+import 'package:image_search/presentation/screens/my/provider/my_commit_provider.dart';
+import 'package:image_search/presentation/screens/my/widgets/commit_widget.dart';
 
-import 'package:image_search/presentation/widgets/commit_widget.dart';
+
 
 import 'package:provider/provider.dart';
 
@@ -14,18 +15,17 @@ import 'dart:math';
 
 ///SearchScreen
 ///커밋기록 API호출 및 리스트 노출
-class MyListScreen extends StatefulWidget {
-  const MyListScreen({
+class MyCommitScreen extends StatefulWidget {
+  const MyCommitScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<MyListScreen> createState() => _MyListScreenState();
+  State<MyCommitScreen> createState() => _MyCommitScreenState();
 }
 
-class _MyListScreenState extends State<MyListScreen> {
+class _MyCommitScreenState extends State<MyCommitScreen> {
   final _controller = ScrollController();
-  StreamSubscription? _subscription;
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _MyListScreenState extends State<MyListScreen> {
     //최하단 스크롤시 리스트뷰 아이템 추가
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       var commitSearchProvider =
-          Provider.of<MyListProvider>(context, listen: false);
+          Provider.of<MyCommitProvider>(context, listen: false);
 
       _controller.addListener(() async {
         if (_controller.position.maxScrollExtent == _controller.offset) {
@@ -54,14 +54,13 @@ class _MyListScreenState extends State<MyListScreen> {
 
   @override
   void dispose() {
-    _subscription?.cancel();
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final commitSearchProvider = context.watch<MyListProvider>();
+    final commitSearchProvider = context.watch<MyCommitProvider>();
 
     return Scaffold(
       body: Column(
@@ -106,7 +105,7 @@ class _MyListScreenState extends State<MyListScreen> {
   }
 
   ///커밋api호출 버튼
-  Widget getCommitListButton(MyListProvider commitProvider) {
+  Widget getCommitListButton(MyCommitProvider commitProvider) {
     return Expanded(
       child: GestureDetector(
         onTap: () {

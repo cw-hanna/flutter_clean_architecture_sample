@@ -3,7 +3,7 @@ import 'package:image_search/domain/entities/commit.dart';
 
 import 'package:image_search/config/theme/cw_colors.dart';
 
-import 'package:image_search/presentation/screens/my/provider/my_detail_provider.dart';
+import 'package:image_search/presentation/screens/my/provider/my_commit_detail_provider.dart';
 import 'package:image_search/presentation/screens/webview/base_web_view.dart';
 
 import 'package:provider/provider.dart';
@@ -14,7 +14,7 @@ class CommitWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final commitDetailProvider = context.watch<MyDetailProvider>();
+    final commitDetailProvider = context.watch<MyCommitDetailProvider>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

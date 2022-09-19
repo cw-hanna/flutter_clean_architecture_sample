@@ -210,11 +210,11 @@ class _$_CommitModel implements _CommitModel {
   Map<String, dynamic> toJson() {
     return _$$_CommitModelToJson(this);
   }
-
+  
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
-
+  
   @override
   // TODO: implement stringify
   bool? get stringify => throw UnimplementedError();

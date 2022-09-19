@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
-import 'package:image_search/core/utils/string_utils.dart';
+import 'package:image_search/core/utils/string_util.dart';
 
 class BaseWebView extends StatefulWidget {
   final String? htmlString;

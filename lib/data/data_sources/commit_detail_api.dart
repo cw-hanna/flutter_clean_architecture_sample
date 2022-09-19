@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:image_search/core/resources/result.dart';
-import 'package:image_search/core/utils/string_utils.dart';
+import 'package:image_search/core/utils/string_util.dart';
 
 class CommitDetailApi {
   CommitDetailApi();

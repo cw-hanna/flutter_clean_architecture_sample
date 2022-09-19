@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_search/core/resources/prefKeys.dart';
+import 'package:image_search/core/utils/pref_util.dart';
 import 'package:image_search/presentation/blocs/login/login_bloc.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 
@@ -99,14 +101,18 @@ Widget logoutRequestScreen(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('로그인된 상태입니다.'),
+        const Text('[SharedPreference 저장된 값]'),
+        Text('ID : ' + PrefUtil.getString(PrefKeys.PREF_ID)),
+        Text('PWD : ' + PrefUtil.getString(PrefKeys.PREF_PWD)),
+        Text('TOKEN : ' + PrefUtil.getString(PrefKeys.PREF_TOKEN)),
         const SizedBox(
           height: 20,
         ),
         GestureDetector(
           onTap: () {
-            BlocProvider.of<LoginBloc>(context).add(LogoutRequested());
+            BlocProvider.of<LoginBloc>(context).add(const LogoutRequested());
           },
           child: Container(
             padding: const EdgeInsets.all(20),

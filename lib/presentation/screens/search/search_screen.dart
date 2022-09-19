@@ -64,7 +64,7 @@ class _SearchScreenState extends State<SearchScreen>
 
           //검색조건 화면
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: [
               searchUserScreen(),
               searchRepoScreen(),
@@ -72,9 +72,7 @@ class _SearchScreenState extends State<SearchScreen>
             ].elementAt(_selectedIndex),
           ),
 
-          const SizedBox(
-            height: 10,
-          ),
+          _divider(),
 
           //검색 버튼
           GestureDetector(
@@ -97,9 +95,7 @@ class _SearchScreenState extends State<SearchScreen>
             ),
           ),
 
-          const SizedBox(
-            height: 10,
-          ),
+          _divider(),
 
           //검색결과화면
           Expanded(
@@ -229,5 +225,11 @@ class _SearchScreenState extends State<SearchScreen>
                   ? _selectedColor
                   : _unselectedColor),
         ));
+  }
+
+  Widget _divider() {
+    return const SizedBox(
+      height: 10,
+    );
   }
 }
