@@ -56,15 +56,19 @@ class _MyOrgScreenState extends State<MyOrgScreen> {
 
   ///org api호출 버튼
   Widget getCommitListButton(MyOrgProvider orgProvider) {
+    var loginState = BlocProvider.of<LoginBloc>(context).state;
     return Expanded(
       child: GestureDetector(
         onTap: () {
           //LoginBloc으로 로그인 상태 체크
-          var loginState = BlocProvider.of<LoginBloc>(context).state;
+
           if (loginState is LoginSuccess) {
             orgProvider.fetch();
           } else {
-            const snackBar = SnackBar(content: Text('로그인 먼저 해주세요!'));
+            const snackBar = SnackBar(
+              content: Text('로그인 먼저 해주세요!'),
+              backgroundColor: Colors.red,
+            );
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },

@@ -7,8 +7,6 @@ import 'package:image_search/presentation/blocs/login/login_bloc.dart';
 import 'package:image_search/presentation/screens/my/provider/my_commit_provider.dart';
 import 'package:image_search/presentation/screens/my/widgets/commit_widget.dart';
 
-
-
 import 'package:provider/provider.dart';
 
 import 'dart:math';
@@ -114,7 +112,10 @@ class _MyCommitScreenState extends State<MyCommitScreen> {
           if (loginState is LoginSuccess) {
             commitProvider.fetch();
           } else {
-            const snackBar = SnackBar(content: Text('로그인 먼저 해주세요!'));
+            const snackBar = SnackBar(
+              content: Text('로그인 먼저 해주세요!'),
+              backgroundColor: Colors.red,
+            );
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
