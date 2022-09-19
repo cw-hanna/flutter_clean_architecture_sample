@@ -38,5 +38,5 @@ void saveLoginPrefs(LoginRequested event) {
   PrefUtil.setString('PREF_ID', event.id);
   PrefUtil.setString('PREF_PWD', event.pwd);
   PrefUtil.setString(
-      'PREF_TOKEN', 'Bearer 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');
+      'PREF_TOKEN', 'Bearer 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');
 }

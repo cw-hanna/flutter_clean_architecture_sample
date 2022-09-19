@@ -68,39 +68,42 @@ class _OrgExpandWidgetState extends State<OrgExpandWidget> {
               ],
             );
           },
-          body: Column(
-            children: [
-              const Text('Repositories 목록'),
-              const SizedBox(
-                height: 10,
-              ),
-              for (var i = 0; i < _orgDetailProvider.orgs.length; i++)
-                Column(
+          body: _orgDetailProvider.state.isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Column(
                   children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                          _orgDetailProvider.orgs.elementAt(i).name.toString()),
+                    const Text('Repositories 목록'),
+                    const SizedBox(
+                      height: 10,
                     ),
-                    const Divider(
-                      thickness: 1,
-                      color: CwColors.color1,
-                    )
+                    for (var i = 0; i < _orgDetailProvider.orgs.length; i++)
+                      Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(_orgDetailProvider.orgs
+                                .elementAt(i)
+                                .name
+                                .toString()),
+                          ),
+                          const Divider(
+                            thickness: 1,
+                            color: CwColors.color1,
+                          )
+                        ],
+                      ),
                   ],
                 ),
-            ],
-          ),
           isExpanded: _isExpanded,
         )
       ],
       expansionCallback: (panelIndex, expanded) {
-        if (_orgDetailProvider.orgs.isEmpty) {
-          _orgDetailProvider.fetch(widget.org.login);
-        }
+        _orgDetailProvider.fetch(widget.org.login);
 
         setState(() {
           _isExpanded = !_isExpanded;
+          _orgDetailProvider.orgs.clear();
         });
       },
     );
