@@ -6,24 +6,26 @@ import 'package:image_search/data/models/api_loading_state.dart';
 import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/entities/commit.dart';
 import 'package:image_search/domain/entities/org.dart';
+import 'package:image_search/domain/entities/org_detail.dart';
 import 'package:image_search/domain/usecases/get_commits_use_case.dart';
+import 'package:image_search/domain/usecases/get_orgs_detail_use_case.dart';
 import 'package:image_search/domain/usecases/get_orgs_use_case.dart';
 
 class MyOrgDetailProvider with ChangeNotifier {
-  List<Org> _orgs = [];
+  List<OrgDetail> _orgs = [];
   ApiLoadingState _state = ApiLoadingState(false);
 
   ApiLoadingState get state => _state;
-  List<Org> get orgs => _orgs;
+  List<OrgDetail> get orgs => _orgs;
 
   //api호출
-  Future<void> fetch() async {
+  Future<void> fetch(String? orgName) async {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 
-    GetOrgsUseCase getOrgsUseCase = serviceLocator<GetOrgsUseCase>();
+    GetOrgsDetailUseCase getOrgsDetailUseCase = serviceLocator<GetOrgsDetailUseCase>();
 
-    final Result<List<Org>> result = await getOrgsUseCase.call();
+    final Result<List<OrgDetail>> result = await getOrgsDetailUseCase.call(orgName);
 
     result.when(
         success: (orgs) {

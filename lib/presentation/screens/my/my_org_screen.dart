@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/presentation/blocs/login/login_bloc.dart';
 import 'package:image_search/presentation/screens/my/provider/my_org_provider.dart';
+import 'package:image_search/presentation/screens/my/widgets/org_expand_widget.dart';
 import 'package:image_search/presentation/screens/my/widgets/org_widget.dart';
 
 class MyOrgScreen extends StatefulWidget {
@@ -45,7 +46,8 @@ class _MyOrgScreenState extends State<MyOrgScreen> {
                     itemCount: orgSearchProvider.orgs.length,
                     itemBuilder: (context, index) {
                       final org = orgSearchProvider.orgs[index];
-                      return OrgWidget(org: org);
+                      //return OrgWidget(org: org);
+                      return OrgExpandWidget(org: org);
                     },
                   ),
                 )

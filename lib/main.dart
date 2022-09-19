@@ -7,12 +7,14 @@ import 'package:image_search/presentation/blocs/login/login_bloc.dart';
 import 'package:image_search/presentation/screens/main/main_screen.dart';
 import 'package:image_search/presentation/screens/my/provider/my_commit_detail_provider.dart';
 import 'package:image_search/presentation/screens/my/provider/my_commit_provider.dart';
+import 'package:image_search/presentation/screens/my/provider/my_org_detail_provider.dart';
 import 'package:image_search/presentation/screens/my/provider/my_org_provider.dart';
 
 import 'package:provider/provider.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); // runApp 메소드의 시작 지점에서 Flutter 엔진과 위젯의 바인딩이 미리 완료되어 있게만들어준다.
+  WidgetsFlutterBinding
+      .ensureInitialized(); // runApp 메소드의 시작 지점에서 Flutter 엔진과 위젯의 바인딩이 미리 완료되어 있게만들어준다.
   initServiceLocator(); // ServiceLocator init
   PrefUtil.init(); // SharedPreference init
 
@@ -27,6 +29,9 @@ void main() {
         ),
         ChangeNotifierProvider<MyOrgProvider>(
           create: (_) => MyOrgProvider(),
+        ),
+        ChangeNotifierProvider<MyOrgDetailProvider>(
+          create: (_) => MyOrgDetailProvider(),
         ),
       ],
       child: const MyApp(),
