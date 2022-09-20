@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
+import 'package:image_search/presentation/screens/search/search_repo_screen.dart';
+import 'package:image_search/presentation/screens/search/search_user_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -11,11 +13,6 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
-
-  final TextEditingController _uUserNameController = TextEditingController();
-  final TextEditingController _rUserNameController = TextEditingController();
-  final TextEditingController _cUserNameController = TextEditingController();
-  final TextEditingController _cRepoNameController = TextEditingController();
 
   final Color _selectedColor = CwColors.color1;
   final Color _unselectedColor = CwColors.dark_gray;
@@ -66,151 +63,19 @@ class _SearchScreenState extends State<SearchScreen>
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: [
-              searchUserScreen(),
-              searchRepoScreen(),
-              searchCommitScreen()
+              const SearchUserScreen(),
+              const SearchRepoScreen(),
+              const SearchRepoScreen(),
             ].elementAt(_selectedIndex),
           ),
 
           _divider(),
 
-          //검색 버튼
-          GestureDetector(
-            onTap: () {
-              if (_selectedIndex == 0) {
-              } else if (_selectedIndex == 1) {
-              } else if (_selectedIndex == 2) {}
-            },
-            child: Container(
-              width: 80,
-              height: 40,
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
-                  ),
-                  color: CwColors.color2),
-              child: const Center(
-                child: Text('검색'),
-              ),
-            ),
-          ),
+        
 
           _divider(),
-
-          //검색결과화면
-          Expanded(
-            child: Container(
-              color: Colors.grey,
-              child: Center(child: Text('검색 결과화면')),
-            ),
-          )
         ],
       ),
-    );
-  }
-
-  Widget searchUserScreen() {
-    return Row(
-      children: [
-        const Text('user name : '),
-        SizedBox(
-          width: 250,
-          height: 50,
-          child: TextFormField(
-            controller: _uUserNameController,
-            keyboardType: TextInputType.text,
-            decoration: const InputDecoration(
-              hintText: 'User',
-              hintStyle: TextStyle(
-                fontSize: 20,
-                color: CwColors.dark_gray,
-              ),
-              filled: true,
-              fillColor: CwColors.gray,
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget searchCommitScreen() {
-    return Column(
-      children: [
-        Row(
-          children: [
-            const Text('user name : '),
-            SizedBox(
-              width: 250,
-              height: 50,
-              child: TextFormField(
-                controller: _cUserNameController,
-                keyboardType: TextInputType.text,
-                decoration: const InputDecoration(
-                  hintText: 'User',
-                  hintStyle: TextStyle(
-                    fontSize: 20,
-                    color: CwColors.dark_gray,
-                  ),
-                  filled: true,
-                  fillColor: CwColors.gray,
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Text('repo name : '),
-            SizedBox(
-              width: 250,
-              height: 50,
-              child: TextFormField(
-                controller: _cRepoNameController,
-                keyboardType: TextInputType.text,
-                decoration: const InputDecoration(
-                  hintText: 'Repo',
-                  hintStyle: TextStyle(
-                    fontSize: 20,
-                    color: CwColors.dark_gray,
-                  ),
-                  filled: true,
-                  fillColor: CwColors.gray,
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ],
-        )
-      ],
-    );
-  }
-
-  Widget searchRepoScreen() {
-    return Row(
-      children: [
-        const Text('user name : '),
-        SizedBox(
-          width: 250,
-          height: 50,
-          child: TextFormField(
-            controller: _rUserNameController,
-            keyboardType: TextInputType.text,
-            decoration: const InputDecoration(
-              hintText: 'User',
-              hintStyle: TextStyle(
-                fontSize: 20,
-                color: CwColors.dark_gray,
-              ),
-              filled: true,
-              fillColor: CwColors.gray,
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-      ],
     );
   }
 
