@@ -46,7 +46,7 @@ class _BaseWebViewState extends State<BaseWebView>
 
               Navigator.of(context).pop());
         }
-        return Future(() => false); //위에서 어떻게 할지 정하기 때문에 여기서 뭘 더 하지는 않는다.
+        return Future(() => false);
       },
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -124,6 +124,7 @@ class _BaseWebViewState extends State<BaseWebView>
                   shouldOverrideUrlLoading:
                       (controller, navigationAction) async {
                     var uri = navigationAction.request.url!;
+                    print('bbori shouldOverrideUrlLoading : ' + uri.toString());
 
                     var currentUrl = await controller.getUrl();
                     return NavigationActionPolicy.ALLOW;

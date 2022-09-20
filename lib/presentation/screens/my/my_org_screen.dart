@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/presentation/blocs/login/login_bloc.dart';
 import 'package:image_search/presentation/screens/common/widgets/login_status_widget.dart';
 import 'package:image_search/presentation/screens/my/provider/my_org_provider.dart';
 import 'package:image_search/presentation/screens/my/widgets/org_expand_widget.dart';
-import 'package:image_search/presentation/screens/my/widgets/org_widget.dart';
 
 class MyOrgScreen extends StatefulWidget {
   const MyOrgScreen({Key? key}) : super(key: key);

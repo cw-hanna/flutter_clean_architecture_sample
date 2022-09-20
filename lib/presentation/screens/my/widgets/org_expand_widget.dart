@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/domain/entities/org.dart';
 import 'package:image_search/presentation/screens/my/provider/my_org_detail_provider.dart';
+import 'package:image_search/presentation/screens/webview/base_web_view.dart';
 import 'package:provider/provider.dart';
 
 class OrgExpandWidget extends StatefulWidget {
@@ -106,13 +107,27 @@ class _OrgExpandWidgetState extends State<OrgExpandWidget> {
           i++) {
         widgetList.add(Column(
           children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(_orgDetailProvider.orgMap[widget.org.login]!
-                  .elementAt(i)
-                  .name
-                  .toString()),
+            InkWell(
+              onTap: () {
+                //repository html 웹뷰 이동
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BaseWebView(
+                              htmlString: _orgDetailProvider
+                                  .orgMap[widget.org.login]!
+                                  .elementAt(i)
+                                  .html_url,
+                            )));
+              },
+              child: Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.fromLTRB(20, 3, 20, 3),
+                child: Text(_orgDetailProvider.orgMap[widget.org.login]!
+                    .elementAt(i)
+                    .name
+                    .toString()),
+              ),
             ),
             const Divider(
               thickness: 1,
