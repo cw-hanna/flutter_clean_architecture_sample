@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/presentation/blocs/login/login_bloc.dart';
+import 'package:image_search/presentation/screens/common/widgets/login_status_widget.dart';
 import 'package:image_search/presentation/screens/my/provider/my_org_provider.dart';
 import 'package:image_search/presentation/screens/my/widgets/org_expand_widget.dart';
 import 'package:image_search/presentation/screens/my/widgets/org_widget.dart';
@@ -46,8 +47,9 @@ class _MyOrgScreenState extends State<MyOrgScreen> {
                     itemCount: orgSearchProvider.orgs.length,
                     itemBuilder: (context, index) {
                       final org = orgSearchProvider.orgs[index];
-                      //return OrgWidget(org: org);
-                      return OrgExpandWidget(org: org);
+                      return OrgExpandWidget(
+                        org: org,
+                      );
                     },
                   ),
                 )
@@ -59,31 +61,34 @@ class _MyOrgScreenState extends State<MyOrgScreen> {
   ///org api호출 버튼
   Widget getCommitListButton(MyOrgProvider orgProvider) {
     var loginState = BlocProvider.of<LoginBloc>(context).state;
-    return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          //LoginBloc으로 로그인 상태 체크
-
-          if (loginState is LoginSuccess) {
-            orgProvider.fetch();
-          } else {
-            const snackBar = SnackBar(
-              content: Text('로그인 먼저 해주세요!'),
-              backgroundColor: Colors.red,
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          }
-        },
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(10.0),
-              ),
-              color: CwColors.color2),
-          child: const Center(child: Text('내가 속한 organization 불러오기')),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        GestureDetector(
+          onTap: () {
+            //LoginBloc으로 로그인 상태 체크
+            if (loginState is LoginSuccess) {
+              orgProvider.fetch();
+            } else {
+              const snackBar = SnackBar(
+                content: Text('로그인 먼저 해주세요!'),
+                backgroundColor: Colors.red,
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            }
+          },
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10.0),
+                ),
+                color: CwColors.color2),
+            child: const Center(child: Text('나의 organization 불러오기')),
+          ),
         ),
-      ),
+        const LoginStatusWidget()
+      ],
     );
   }
 

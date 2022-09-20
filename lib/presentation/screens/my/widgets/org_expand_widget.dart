@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 import 'package:image_search/domain/entities/org.dart';
-import 'package:image_search/domain/entities/org_detail.dart';
 import 'package:image_search/presentation/screens/my/provider/my_org_detail_provider.dart';
 import 'package:provider/provider.dart';
 
 class OrgExpandWidget extends StatefulWidget {
   final Org org;
-  const OrgExpandWidget({Key? key, required this.org}) : super(key: key);
+
+  const OrgExpandWidget({
+    Key? key,
+    required this.org,
+  }) : super(key: key);
 
   @override
   State<OrgExpandWidget> createState() => _OrgExpandWidgetState();
@@ -68,33 +69,19 @@ class _OrgExpandWidgetState extends State<OrgExpandWidget> {
               ],
             );
           },
-          body: _orgDetailProvider.state.isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : Column(
-                  children: [
-                    const Text('Repositories 목록'),
-                    const SizedBox(
-                      height: 10,
+          body:
+              _orgDetailProvider.loadingStateMap[widget.org.login]?.isLoading ==
+                      true
+                  ? const Center(child: CircularProgressIndicator())
+                  : Column(
+                      children: [
+                        const Text('Repositories 목록'),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        ..._repositoriesWidget(),
+                      ],
                     ),
-                    for (var i = 0; i < _orgDetailProvider.orgs.length; i++)
-                      Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(_orgDetailProvider.orgs
-                                .elementAt(i)
-                                .name
-                                .toString()),
-                          ),
-                          const Divider(
-                            thickness: 1,
-                            color: CwColors.color1,
-                          )
-                        ],
-                      ),
-                  ],
-                ),
           isExpanded: _isExpanded,
         )
       ],
@@ -103,9 +90,38 @@ class _OrgExpandWidgetState extends State<OrgExpandWidget> {
 
         setState(() {
           _isExpanded = !_isExpanded;
-          _orgDetailProvider.orgs.clear();
         });
       },
     );
+  }
+
+  //organization하위 repositories목록을 Map에서 꺼내옴.
+  List<Widget> _repositoriesWidget() {
+    final _orgDetailProvider = context.watch<MyOrgDetailProvider>();
+    var widgetList = <Widget>[];
+
+    if (_orgDetailProvider.orgMap[widget.org.login] != null) {
+      for (var i = 0;
+          i < _orgDetailProvider.orgMap[widget.org.login]!.length;
+          i++) {
+        widgetList.add(Column(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(_orgDetailProvider.orgMap[widget.org.login]!
+                  .elementAt(i)
+                  .name
+                  .toString()),
+            ),
+            const Divider(
+              thickness: 1,
+              color: CwColors.color1,
+            )
+          ],
+        ));
+      }
+    }
+    return widgetList;
   }
 }
