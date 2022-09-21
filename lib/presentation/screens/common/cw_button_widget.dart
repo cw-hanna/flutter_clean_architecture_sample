@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
 
-class SearchButtonWidget extends StatelessWidget {
+class CwButtonWidget extends StatelessWidget {
+  final String btnTxt;
   final Function onTap;
-  const SearchButtonWidget({Key? key, required this.onTap}) : super(key: key);
+
+  const CwButtonWidget({Key? key, required this.btnTxt, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return //검색 버튼
-        GestureDetector(
+    return GestureDetector(
       onTap: () {
         onTap();
       },
@@ -21,8 +23,8 @@ class SearchButtonWidget extends StatelessWidget {
               Radius.circular(10.0),
             ),
             color: CwColors.color2),
-        child: const Center(
-          child: Text('검색'),
+        child: Center(
+          child: Text(btnTxt),
         ),
       ),
     );
