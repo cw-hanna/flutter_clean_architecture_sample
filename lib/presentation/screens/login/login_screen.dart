@@ -35,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
 Widget loginRequestScreen(TextEditingController idController,
     TextEditingController pwdController, BuildContext context) {
   return Scaffold(
+    resizeToAvoidBottomInset: false, 
     body: Container(
       padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
       color: Colors.white,

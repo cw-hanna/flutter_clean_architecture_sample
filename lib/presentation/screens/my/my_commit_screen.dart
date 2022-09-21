@@ -62,6 +62,7 @@ class _MyCommitScreenState extends State<MyCommitScreen> {
     final commitSearchProvider = context.watch<MyCommitProvider>();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false, 
       body: Column(
         children: [
           //커밋api호출 버튼, 로그인상태 아이콘

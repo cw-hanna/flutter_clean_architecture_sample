@@ -21,6 +21,7 @@ class _MyOrgScreenState extends State<MyOrgScreen> {
     final orgSearchProvider = context.watch<MyOrgProvider>();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false, 
       body: Column(
         children: [
           //커밋api호출 버튼, 로그인상태 아이콘

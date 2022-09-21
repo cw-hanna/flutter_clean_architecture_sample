@@ -124,7 +124,8 @@ class _BaseWebViewState extends State<BaseWebView>
                   shouldOverrideUrlLoading:
                       (controller, navigationAction) async {
                     var uri = navigationAction.request.url!;
-                    print('////////////////// shouldOverrideUrlLoading  ' + uri.toString());
+                    print('////////////////// shouldOverrideUrlLoading  ' +
+                        uri.toString());
 
                     var currentUrl = await controller.getUrl();
                     return NavigationActionPolicy.ALLOW;
