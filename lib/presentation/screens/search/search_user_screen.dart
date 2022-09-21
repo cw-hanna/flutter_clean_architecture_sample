@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
+import 'package:image_search/core/utils/string_util.dart';
+import 'package:image_search/presentation/screens/search/provider/search_user_provider.dart';
 import 'package:image_search/presentation/screens/search/widgets/search_button_widget.dart';
+import 'package:image_search/presentation/screens/search/widgets/search_user_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 class SearchUserScreen extends StatefulWidget {
   const SearchUserScreen({Key? key}) : super(key: key);
@@ -14,8 +18,11 @@ class _SearchUserScreenState extends State<SearchUserScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var _searchUserProvider = context.watch<SearchUserProvider>();
+
     return Column(
       children: [
+        //사용자명 입력창
         Row(
           children: [
             const Text('user name : '),
@@ -39,8 +46,21 @@ class _SearchUserScreenState extends State<SearchUserScreen> {
             ),
           ],
         ),
-        
-        SearchButtonWidget(onTap: () {}),
+        //검색버튼
+        SearchButtonWidget(onTap: () {
+          if (StringUtil.isValidString(_uUserNameController.text)) {
+            _searchUserProvider.fetch(_uUserNameController.text);
+
+            if (_searchUserProvider.searchUserModel != null) {
+              showModalBottomSheet(
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) {
+                    return const SearchUserBottomSheet();
+                  });
+            }
+          }
+        })
       ],
     );
   }
