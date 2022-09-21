@@ -6,10 +6,10 @@ import 'package:image_search/domain/repositories/commit_api_repository.dart';
 class GetCommitsUseCase {
   GetCommitsUseCase();
 
-  Future<Result<List<Commit>>> call() async {
+  Future<Result<List<Commit>>> call(String? owner, String? repo) async {
     CommitApiRepository repository = serviceLocator<CommitApiRepository>();
 
-    final result = await repository.fetch();
+    final result = await repository.fetch(owner, repo);
 
     return result.when(success: (commits) {
       return Result.success(commits);

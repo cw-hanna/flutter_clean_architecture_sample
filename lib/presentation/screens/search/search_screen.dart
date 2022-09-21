@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_search/config/theme/cw_colors.dart';
+import 'package:image_search/presentation/screens/search/search_commit_screen.dart';
 import 'package:image_search/presentation/screens/search/search_repo_screen.dart';
 import 'package:image_search/presentation/screens/search/search_user_screen.dart';
 
@@ -66,7 +67,7 @@ class _SearchScreenState extends State<SearchScreen>
             child: [
               const SearchUserScreen(),
               const SearchRepoScreen(),
-              const SearchRepoScreen(),
+              const SearchCommitScreen(),
             ].elementAt(_selectedIndex),
           ),
 

@@ -7,7 +7,7 @@ import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/entities/commit.dart';
 import 'package:image_search/domain/usecases/get_commits_use_case.dart';
 
-class MyCommitProvider with ChangeNotifier {
+class SearchCommitProvider with ChangeNotifier {
   List<Commit> _commits = [];
   ApiLoadingState _state = ApiLoadingState(false);
 
@@ -20,9 +20,9 @@ class MyCommitProvider with ChangeNotifier {
     notifyListeners();
 
     GetCommitsUseCase getCommitsUseCase = serviceLocator<GetCommitsUseCase>();
-    
+
     final Result<List<Commit>> result = await getCommitsUseCase.call(owner, repo);
-   
+
 
     result.when(
         success: (commits) {

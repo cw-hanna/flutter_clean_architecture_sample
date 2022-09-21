@@ -9,9 +9,9 @@ class CommitApiRepositoryImpl implements CommitApiRepository {
   CommitApiRepositoryImpl();
 
   @override
-  Future<Result<List<Commit>>> fetch() async {
+  Future<Result<List<Commit>>> fetch(String? owner, String? repo) async {
     CommitApi api = serviceLocator<CommitApi>();
-    final Result<Iterable> result = await api.fetch();
+    final Result<Iterable> result = await api.fetch(owner, repo);
 
     return result.when(
       success: (iterable) {

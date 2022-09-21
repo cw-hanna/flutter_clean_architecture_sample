@@ -14,19 +14,14 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final List _screens = const [
-    MyOrgScreen(),
-    MyCommitScreen(),
-    LoginScreen(),
-    SearchScreen()
-  ];
+  final List _screens = const [MyOrgScreen(), LoginScreen(), SearchScreen()];
 
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false, 
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('Sample App'),
         backgroundColor: CwColors.color3,
@@ -46,11 +41,7 @@ class _MainScreenState extends State<MainScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            label: 'My_Org',
-            icon: Icon(Icons.list),
-          ),
-          BottomNavigationBarItem(
-            label: 'My_Commit',
+            label: 'My',
             icon: Icon(Icons.list),
           ),
           BottomNavigationBarItem(

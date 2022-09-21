@@ -62,7 +62,7 @@ class _MyCommitScreenState extends State<MyCommitScreen> {
     final commitSearchProvider = context.watch<MyCommitProvider>();
 
     return Scaffold(
-      resizeToAvoidBottomInset: false, 
+      
       body: Column(
         children: [
           //커밋api호출 버튼, 로그인상태 아이콘
@@ -112,7 +112,7 @@ class _MyCommitScreenState extends State<MyCommitScreen> {
           //LoginBloc으로 로그인 상태 체크
           var loginState = BlocProvider.of<LoginBloc>(context).state;
           if (loginState is LoginSuccess) {
-            commitProvider.fetch();
+            //commitProvider.fetch();
           } else {
             const snackBar = SnackBar(
               content: Text('로그인 먼저 해주세요!'),

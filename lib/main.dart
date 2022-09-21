@@ -9,6 +9,7 @@ import 'package:image_search/presentation/screens/my/provider/my_commit_detail_p
 import 'package:image_search/presentation/screens/my/provider/my_commit_provider.dart';
 import 'package:image_search/presentation/screens/my/provider/my_org_detail_provider.dart';
 import 'package:image_search/presentation/screens/my/provider/my_org_provider.dart';
+import 'package:image_search/presentation/screens/search/provider/search_commit_provider.dart';
 import 'package:image_search/presentation/screens/search/provider/search_repo_provider.dart';
 import 'package:image_search/presentation/screens/search/provider/search_user_provider.dart';
 
@@ -40,6 +41,9 @@ void main() {
         ),
         ChangeNotifierProvider<SearchRepoProvider>(
           create: (_) => SearchRepoProvider(),
+        ),
+        ChangeNotifierProvider<SearchCommitProvider>(
+          create: (_) => SearchCommitProvider(),
         ),
       ],
       child: const MyApp(),
