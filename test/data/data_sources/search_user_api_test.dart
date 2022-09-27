@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:image_search/core/resources/result.dart';
 import 'package:image_search/data/data_sources/search_user_api.dart';
-import 'package:image_search/data/models/search_user_model.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
@@ -14,6 +12,7 @@ void main() {
     final api = SearchUserApi();
     final client = MockClient();
 
+    //Mock http 객체의 동작과 예상결과를 정의.
     //when(테스트할 코드)
     //thenAnswer(예상되는 결과)
     when(client.get(Uri.parse(SearchUserApi.baseUrl + 'gkssk925')))
@@ -22,7 +21,6 @@ void main() {
     final result = await api.fetch('gkssk925', client: client);
 
     var expectedData;
-
     result.when(
         success: (searchUserModel) {
           expectedData = searchUserModel;

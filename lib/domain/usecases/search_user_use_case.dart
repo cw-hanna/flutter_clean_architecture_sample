@@ -4,13 +4,14 @@ import 'package:image_search/di/locator.dart';
 import 'package:image_search/domain/repositories/search_user_api_repository.dart';
 
 class SearchUserUseCase {
-  SearchUserUseCase();
+  SearchUserApiRepository? repository;
+  SearchUserUseCase({SearchUserApiRepository? repository})
+      : repository = repository ?? serviceLocator<SearchUserApiRepository>();
 
-  Future<Result<SearchUserModel>> call(String? userName) async {
-    SearchUserApiRepository repository =
-        serviceLocator<SearchUserApiRepository>();
-
-    final result = await repository.fetch(userName);
+  Future<Result<SearchUserModel>> call(
+    String? userName,
+  ) async {
+    final result = await repository!.fetch(userName);
 
     return result;
   }
