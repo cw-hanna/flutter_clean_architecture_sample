@@ -6,12 +6,13 @@ import 'package:image_search/domain/repositories/commit_api_repository.dart';
 import 'package:image_search/domain/repositories/org_api_repository.dart';
 
 class GetOrgsUseCase {
-  GetOrgsUseCase();
+  OrgApiRepository? repository;
+
+  GetOrgsUseCase({OrgApiRepository? repository})
+      : repository = repository ?? serviceLocator<OrgApiRepository>();
 
   Future<Result<List<Org>>> call() async {
-    OrgApiRepository repository = serviceLocator<OrgApiRepository>();
-
-    final result = await repository.fetch();
+    final result = await repository!.fetch();
 
     return result.when(success: (orgs) {
       return Result.success(orgs);
