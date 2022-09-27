@@ -7,7 +7,7 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(const LoginInitial()) {
     on<LoginRequested>((event, emit) async {
-      saveLoginPrefs(event);
+      await saveLoginPrefs(event);
       var result = checkLogin(event.id, event.pwd);
 
       if (result) {
@@ -17,7 +17,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
     });
 
-    on<LogoutRequested>((event, emit) {
+    on<LogoutRequested>((event, emit) async {
+      await clearoginPrefs();
       emit(const LogoutSuccess());
     });
   }
@@ -34,9 +35,16 @@ bool checkLogin(String id, String pwd) {
 }
 
 //로그인 preference 저장
-void saveLoginPrefs(LoginRequested event) {
-  PrefUtil.setString('PREF_ID', event.id);
-  PrefUtil.setString('PREF_PWD', event.pwd);
-  PrefUtil.setString(
-      'PREF_TOKEN', 'Bearer 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');
+Future<void> saveLoginPrefs(LoginRequested event) async {
+  await PrefUtil.setString('PREF_ID', event.id);
+  await PrefUtil.setString('PREF_PWD', event.pwd);
+  await PrefUtil.setString(
+      'PREF_TOKEN', 'Bearer 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');
+}
+
+//로그아웃시 preference 삭제
+Future<void> clearoginPrefs() async {
+  await PrefUtil.setString('PREF_ID', '');
+  await PrefUtil.setString('PREF_PWD', '');
+  await PrefUtil.setString('PREF_TOKEN', '');
 }

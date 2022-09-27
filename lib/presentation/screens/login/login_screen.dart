@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_search/config/theme/font_theme.dart';
 import 'package:image_search/core/resources/prefKeys.dart';
 import 'package:image_search/core/utils/pref_util.dart';
 import 'package:image_search/presentation/blocs/login/login_bloc.dart';
@@ -35,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
 Widget loginRequestScreen(TextEditingController idController,
     TextEditingController pwdController, BuildContext context) {
   return Scaffold(
-    resizeToAvoidBottomInset: false, 
+    resizeToAvoidBottomInset: false,
     body: Container(
       padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
       color: Colors.white,
@@ -48,7 +49,7 @@ Widget loginRequestScreen(TextEditingController idController,
               hintText: 'ID',
               hintStyle: TextStyle(
                 fontSize: 20,
-                color: CwColors.dark_gray,
+                color: CwColors.darkGray,
               ),
               filled: true,
               fillColor: CwColors.gray,
@@ -65,7 +66,7 @@ Widget loginRequestScreen(TextEditingController idController,
                 hintText: 'PASSWORD',
                 hintStyle: TextStyle(
                   fontSize: 20,
-                  color: CwColors.dark_gray,
+                  color: CwColors.darkGray,
                 ),
                 filled: true,
                 fillColor: CwColors.gray,
@@ -104,10 +105,24 @@ Widget logoutRequestScreen(BuildContext context) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('[SharedPreference 저장된 값]'),
-        Text('ID : ' + PrefUtil.getString(PrefKeys.PREF_ID)),
-        Text('PWD : ' + PrefUtil.getString(PrefKeys.PREF_PWD)),
-        Text('TOKEN : ' + PrefUtil.getString(PrefKeys.PREF_TOKEN)),
+        const Text('[SharedPreference 저장된 값]', style: CwFont.title1),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          'ID : ' + PrefUtil.getString(PrefKeys.PREF_ID),
+          style: CwFont.title2,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text('PWD : ' + PrefUtil.getString(PrefKeys.PREF_PWD),
+            style: CwFont.title2),
+        const SizedBox(
+          height: 10,
+        ),
+        Text('TOKEN : ' + PrefUtil.getString(PrefKeys.PREF_TOKEN),
+            style: CwFont.title2),
         const SizedBox(
           height: 20,
         ),

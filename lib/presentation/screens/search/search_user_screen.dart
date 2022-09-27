@@ -36,7 +36,7 @@ class _SearchUserScreenState extends State<SearchUserScreen> {
                   hintText: 'User',
                   hintStyle: TextStyle(
                     fontSize: 20,
-                    color: CwColors.dark_gray,
+                    color: CwColors.darkGray,
                   ),
                   filled: true,
                   fillColor: CwColors.gray,

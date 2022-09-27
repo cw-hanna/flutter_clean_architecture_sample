@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_search/core/resources/result.dart';
 import 'package:image_search/data/models/api_loading_state.dart';
 import 'package:image_search/di/locator.dart';
-import 'package:image_search/domain/entities/commit.dart';
 import 'package:image_search/domain/entities/org.dart';
-import 'package:image_search/domain/usecases/get_commits_use_case.dart';
 import 'package:image_search/domain/usecases/get_orgs_use_case.dart';
 
 class MyOrgProvider with ChangeNotifier {

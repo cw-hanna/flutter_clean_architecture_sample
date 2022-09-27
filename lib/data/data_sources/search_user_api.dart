@@ -10,11 +10,13 @@ class SearchUserApi {
 
   static const baseUrl = 'https://api.github.com/users/';
 
-  Future<Result<SearchUserModel>> fetch(String? userName) async {
+  Future<Result<SearchUserModel>> fetch(String? userName,
+      {http.Client? client}) async {
+    client ??= http.Client();
+
     if (StringUtil.isValidString(userName)) {
       try {
-        final response =
-            await http.Client().get(Uri.parse('$baseUrl$userName'));
+        final response = await client.get(Uri.parse('$baseUrl$userName'));
 
         var jsonResponse = jsonDecode(response.body);
         var searchUserModel = SearchUserModel.fromJson(jsonResponse);

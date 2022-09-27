@@ -16,7 +16,7 @@ class _SearchScreenState extends State<SearchScreen>
   late TabController _tabController;
 
   final Color _selectedColor = CwColors.color1;
-  final Color _unselectedColor = CwColors.dark_gray;
+  final Color _unselectedColor = CwColors.darkGray;
 
   var _selectedIndex = 0;
 

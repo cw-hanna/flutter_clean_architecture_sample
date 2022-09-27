@@ -37,7 +37,7 @@ class _SearchRepoScreenState extends State<SearchRepoScreen> {
                   hintText: 'User',
                   hintStyle: TextStyle(
                     fontSize: 20,
-                    color: CwColors.dark_gray,
+                    color: CwColors.darkGray,
                   ),
                   filled: true,
                   fillColor: CwColors.gray,
@@ -59,7 +59,7 @@ class _SearchRepoScreenState extends State<SearchRepoScreen> {
 
         //repository 리스트
         SizedBox(
-          height: 450,
+          height: 400,
           child: ListView(
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
@@ -105,7 +105,7 @@ class _SearchRepoScreenState extends State<SearchRepoScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                decoration:const  BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(20),

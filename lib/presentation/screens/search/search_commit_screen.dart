@@ -70,7 +70,7 @@ class _SearchCommitScreenState extends State<SearchCommitScreen> {
                   hintText: 'User',
                   hintStyle: TextStyle(
                     fontSize: 20,
-                    color: CwColors.dark_gray,
+                    color: CwColors.darkGray,
                   ),
                   filled: true,
                   fillColor: CwColors.gray,
@@ -93,7 +93,7 @@ class _SearchCommitScreenState extends State<SearchCommitScreen> {
                   hintText: 'Repo',
                   hintStyle: TextStyle(
                     fontSize: 20,
-                    color: CwColors.dark_gray,
+                    color: CwColors.darkGray,
                   ),
                   filled: true,
                   fillColor: CwColors.gray,
@@ -121,7 +121,7 @@ class _SearchCommitScreenState extends State<SearchCommitScreen> {
         searchCommitProvider.state.isLoading
             ? const CircularProgressIndicator()
             : SizedBox(
-                height: 400,
+                height: 380,
                 child: ListView.builder(
                   controller: _controller,
                   padding: const EdgeInsets.all(16.0),
