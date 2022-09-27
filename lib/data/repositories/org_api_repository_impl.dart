@@ -6,12 +6,12 @@ import 'package:image_search/domain/entities/org.dart';
 import 'package:image_search/domain/repositories/org_api_repository.dart';
 
 class OrgApiRepositoryImpl implements OrgApiRepository {
-  OrgApiRepositoryImpl();
+  OrgApi? api;
+  OrgApiRepositoryImpl({OrgApi? api}) : api = api ?? serviceLocator<OrgApi>();
 
   @override
   Future<Result<List<Org>>> fetch() async {
-    OrgApi api = serviceLocator<OrgApi>();
-    final Result<Iterable> result = await api.fetch();
+    final Result<Iterable> result = await api!.fetch();
 
     return result.when(
       success: (iterable) {
