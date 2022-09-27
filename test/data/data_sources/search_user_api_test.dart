@@ -9,16 +9,16 @@ import 'search_user_api_test.mocks.dart';
 @GenerateMocks([http.Client]) //Mock환경에쓸 Mock http
 void main() {
   test('SearchUser Api를 잘 가져와야한다.', () async {
-    final api = SearchUserApi();
-    final client = MockClient();
+    final mockClient = MockClient();
+    final api = SearchUserApi(client: mockClient);
 
     //Mock http 객체의 동작과 예상결과를 정의.
     //when(테스트할 코드)
     //thenAnswer(예상되는 결과)
-    when(client.get(Uri.parse(SearchUserApi.baseUrl + 'gkssk925')))
+    when(mockClient.get(Uri.parse(SearchUserApi.baseUrl + 'gkssk925')))
         .thenAnswer((realInvocation) async => http.Response(fakeJsonBody, 200));
 
-    final result = await api.fetch('gkssk925', client: client);
+    final result = await api.fetch('gkssk925');
 
     var expectedData;
     result.when(

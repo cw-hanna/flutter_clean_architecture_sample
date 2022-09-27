@@ -6,17 +6,16 @@ import 'package:image_search/core/utils/string_util.dart';
 import 'package:image_search/data/models/search_user_model.dart';
 
 class SearchUserApi {
-  SearchUserApi();
+  http.Client? client;
+
+  SearchUserApi({http.Client? client}) : client = client ?? http.Client();
 
   static const baseUrl = 'https://api.github.com/users/';
 
-  Future<Result<SearchUserModel>> fetch(String? userName,
-      {http.Client? client}) async {
-    client ??= http.Client();
-
+  Future<Result<SearchUserModel>> fetch(String? userName) async {
     if (StringUtil.isValidString(userName)) {
       try {
-        final response = await client.get(Uri.parse('$baseUrl$userName'));
+        final response = await client!.get(Uri.parse('$baseUrl$userName'));
 
         var jsonResponse = jsonDecode(response.body);
         var searchUserModel = SearchUserModel.fromJson(jsonResponse);
