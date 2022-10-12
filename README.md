@@ -1,16 +1,12 @@
-# sample
+# Flutter Clean Architecture Sample
 
-A new Flutter project.
+Clean Architecture & DI 스터디를 위해 만들어본
+Github Open API를 활용한
+Flutter Clean Architecture Sample 앱입니다.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 초기 로그인계정
+  -  ID : test
+  -  PWD : 1
+  
+-login_bloc.dart파일에 Personal Token값을 바꾸시고 테스트하시면 됩니다.
