@@ -26,7 +26,7 @@ jobs:
            # 3. change your email
           git config --global user.email hanna0926@coway.com
           # 4. change your name
-          git config --global user.name 최한나[모바일앱개발팀]
+          git config --global user.name cw-hanna
           git status
           # 5. change your repository
           git remote add origin https://github.com/cw-hanna/cw-hanna.github.io
