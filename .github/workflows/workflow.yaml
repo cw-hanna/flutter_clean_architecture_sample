@@ -18,10 +18,10 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --release
         # 1. change path which exist lib/main.dart
-        working-directory: ./sample_application
+        working-directory: /Users/hanna/Desktop/sample_application
       - run: |
           # 2. change path to [existed lib/main.dart path]/build/web
-          cd sample_application/build/web
+          cd /Users/hanna/Desktop/sample_application/build/web
           git init
            # 3. change your email
           git config --global user.email hanna0926@coway.com
