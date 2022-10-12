@@ -29,7 +29,7 @@ jobs:
           git config --global user.name cw-hanna
           git status
           # 5. change your repository
-          git remote add origin https://cw-hanna:qndqnd0926!@github.com/cw-hanna/flutter_clean_architecture_sample.git
+          git remote add origin https://cw-hanna:fd1780bz39q!@github.com/cw-hanna/flutter_clean_architecture_sample.git
           git checkout -b gh-pages
           git add --all
           git commit -m "update"
