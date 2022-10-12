@@ -18,7 +18,7 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --release
         # 1. change path which exist lib/main.dart
-        working-directory: /Users/hanna/Desktop/sample_application
+        working-directory: ./
       - run: |
           # 2. change path to [existed lib/main.dart path]/build/web
           cd /Users/hanna/Desktop/sample_application/build/web
