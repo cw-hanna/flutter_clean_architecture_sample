@@ -39,7 +39,7 @@ Future<void> saveLoginPrefs(LoginRequested event) async {
   await PrefUtil.setString('PREF_ID', event.id);
   await PrefUtil.setString('PREF_PWD', event.pwd);
   await PrefUtil.setString(
-      'PREF_TOKEN', 'Bearer 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');
+      'PREF_TOKEN', 'Bearer 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');
 }
 
 //로그아웃시 preference 삭제
